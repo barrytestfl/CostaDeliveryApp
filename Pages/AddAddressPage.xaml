@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CostaDeliveryApp.Pages.AddAddressPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+    Title="Delivery Location"
+     >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".9*" />
+            <RowDefinition Height=".5*" />
+        </Grid.RowDefinitions>
+        <Grid>
+
+            <maps:Map  x:Name="map" 
+                       MapClicked="map_MapClicked"
+                       IsTrafficEnabled="true"
+                       IsShowingUser="true"
+                       >
+                <x:Arguments>
+                    <MapSpan>
+                        <x:Arguments>
+                            <sensors:Location>
+                                <x:Arguments>
+                                    <x:Double>36.9628066</x:Double>
+                                    <x:Double>-122.0194722</x:Double>
+                                </x:Arguments>
+                            </sensors:Location>
+                            <x:Double>0.01</x:Double>
+                            <x:Double>0.01</x:Double>
+                        </x:Arguments>
+                    </MapSpan>
+                </x:Arguments>
+            </maps:Map>
+            <!--<Image Aspect="Center" Source="mapholder.png" />
+            <Image
+                HorizontalOptions="Center"
+                Source="pin"
+                VerticalOptions="Center" />-->
+        </Grid>
+        <Frame
+            Grid.Row="1"
+            Margin="0,-15,0,0"
+            BackgroundColor="White"
+            CornerRadius="25">
+            <VerticalStackLayout>
+                <Label
+                    Margin="0,0,0,15"
+                    FontFamily="bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="Select your location"
+                    TextColor="Black" />
+                <Frame Padding="0" BackgroundColor="#F6F6F6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".1*" />
+                            <ColumnDefinition Width=".9*" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="20">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="AwesomeSolid"
+                                    Glyph="&#xf002;"
+                                    Color="Black" />
+                            </Image.Source>
+                        </Image>
+                        <Entry Grid.Column="1" Placeholder="Find a location" />
+                    </Grid>
+                </Frame>
+                <Entry Placeholder="Exact Address (Av., Street, Zone, Colony...)" Text="" />
+                <Entry Placeholder="Address Reference" />
+                <Button
+                    Margin="0,20,0,0"
+                    BackgroundColor="#FB7647"
+                    Clicked="SaveAddress_Clicked"
+                    
+                    Text="Save Address" />
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+
+</ContentPage>

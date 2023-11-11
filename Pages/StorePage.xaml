@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CostaDeliveryApp.Pages.StorePage"             
+             Title="StorePage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Aspect="AspectFill" Source="dummy.png" />
+      <Frame
+            Grid.Row="1"
+            Margin="0,-20,0,0"
+            Padding="0"
+            CornerRadius="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".2*" />
+                    <RowDefinition Height=".8*" />
+                </Grid.RowDefinitions>
+
+                <VerticalStackLayout Margin="25">
+                    <Label
+                        FontFamily="bold"
+                        FontSize="Medium"
+                        Text="Didit" />
+                    <HorizontalStackLayout Margin="0,10,0,0">
+                        <Image VerticalOptions="Center" WidthRequest="15">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="AwesomeSolid"
+                                    Glyph="&#xf005;" />
+                            </Image.Source>
+                        </Image>
+                        <Label
+                            Margin="10,0,0,0"
+                            FontFamily="bold"
+                            FontSize="Small"
+                            Text="{Binding Store.Rating}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <Frame
+                    Grid.Row="1"
+                    Padding="10"
+                    CornerRadius="15">
+                  
+        <Grid>
+                        <CollectionView
+                            Margin="20,10,20,0"
+                            ItemsSource="{Binding Categories}"
+                            SelectedItem="{Binding CurrentCategory}"
+                            SelectionChanged="Category_SelectionChanged"
+                            SelectionChangedCommand="{Binding CategorySelectedCommand}"
+                            SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout
+                                    HorizontalItemSpacing="5"
+                                    Orientation="Vertical"
+                                    Span="2"
+                                    VerticalItemSpacing="5" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Image Aspect="AspectFill" Source="{Binding Image}" />
+                                        <Grid BackgroundColor="Black" Opacity=".5" />
+                                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <Image VerticalOptions="Center" WidthRequest="15">
+                                                <Image.Source>
+                                                    <FontImageSource
+                                                        FontFamily="AwesomeSolid"
+                                                        Glyph="&#xf111;"
+                                                        />
+                                                </Image.Source>
+                                            </Image>
+                                            <Label
+                                                FontFamily="bold"
+                                                FontSize="Large"
+                                                Text="{Binding Name}"
+                                                TextColor="White"
+                                                VerticalTextAlignment="Center" />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+       
+                </Frame>
+            </Grid>
+
+        </Frame>
+        <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Blue">
+            <Grid
+              
+                ColumnDefinitions="*,*"
+                HeightRequest="70">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Grid.GestureRecognizers>
+                <Label
+                    FontFamily="bold"
+                    HorizontalOptions="Center"
+                    Text="CHECKOUT"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+
+
+                <Label
+                    Grid.Column="1"
+                    FontFamily="black"
+                    HorizontalTextAlignment="Center"
+                    Text="Cart: 3 Items - $25.00"
+                     BackgroundColor="CornflowerBlue"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

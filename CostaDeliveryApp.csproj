@@ -1,0 +1,159 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>CostaDeliveryApp</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>CostaDeliveryApp</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.costadeliveryapp</ApplicationId>
+		<ApplicationIdGuid>39cb06ab-c3c9-4662-a624-6956eb05d0c9</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\FontAwesomeSolid.otf" />
+	  <None Remove="Resources\Fonts\latoblack.TTF" />
+	  <None Remove="Resources\Fonts\latobold.TTF" />
+	  <None Remove="Resources\Fonts\latoitalic.TTF" />
+	  <None Remove="Resources\Fonts\latoregular.TTF" />
+	  <None Remove="Resources\Images\add.svg" />
+	  <None Remove="Resources\Images\applogo.png" />
+	  <None Remove="Resources\Images\boxes.svg" />
+	  <None Remove="Resources\Images\cake.jpg" />
+	  <None Remove="Resources\Images\cat_burguers.jpg" />
+	  <None Remove="Resources\Images\cat_desserts.jpg" />
+	  <None Remove="Resources\Images\cat_drinks.jpg" />
+	  <None Remove="Resources\Images\cat_pizzas.jpg" />
+	  <None Remove="Resources\Images\cat_salads.jpg" />
+	  <None Remove="Resources\Images\cat_starters.jpg" />
+	  <None Remove="Resources\Images\coffee.jpg" />
+	  <None Remove="Resources\Images\done.svg" />
+	  <None Remove="Resources\Images\dummy.png" />
+	  <None Remove="Resources\Images\food.svg" />
+	  <None Remove="Resources\Images\food1.svg" />
+	  <None Remove="Resources\Images\hamburguer.jpg" />
+	  <None Remove="Resources\Images\header1.jpg" />
+	  <None Remove="Resources\Images\header2.jpg" />
+	  <None Remove="Resources\Images\header3.jpg" />
+	  <None Remove="Resources\Images\header4.jpg" />
+	  <None Remove="Resources\Images\header5.jpg" />
+	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\lobster.jpg" />
+	  <None Remove="Resources\Images\location.svg" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\logo1.jpg" />
+	  <None Remove="Resources\Images\logo2.jpg" />
+	  <None Remove="Resources\Images\logo3.jpg" />
+	  <None Remove="Resources\Images\logo4.jpg" />
+	  <None Remove="Resources\Images\logo5.jpg" />
+	  <None Remove="Resources\Images\mapholder.png" />
+	  <None Remove="Resources\Images\navigate_next.svg" />
+	  <None Remove="Resources\Images\pancakes.jpg" />
+	  <None Remove="Resources\Images\pepperoni.jpg" />
+	  <None Remove="Resources\Images\salad.jpg" />
+	  <None Remove="Resources\Images\service.svg" />
+	  <None Remove="Resources\Images\setting.png" />
+	  <None Remove="Resources\Images\soda.jpg" />
+	  <None Remove="Resources\Images\spaguetti.jpg" />
+	  <None Remove="Resources\Images\star.svg" />
+	  <None Remove="Resources\Images\waffles.jpg" />
+	  <None Remove="Resources\Raw\initialanimation.json" />
+	  <None Remove="Resources\Raw\payment.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Esri.ArcGISRuntime.Toolkit.Maui" Version="200.2.0" />
+		<PackageReference Include="Mapsui.Maui" Version="4.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.100" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.86" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AuthorizationShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AddAddressPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CreateAccountPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\DisplayRouteLayerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\IntroPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\MapNavigationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\MenuPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NavigateRoutePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\OrderDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PaymentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProductPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\StorePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\StoresPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

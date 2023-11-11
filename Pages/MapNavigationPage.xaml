@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CostaDeliveryApp.Pages.MapNavigationPage"
+             NavigationPage.HasNavigationBar="False"
+             
+             xmlns:esriUI="clr-namespace:Esri.ArcGISRuntime.Maui;assembly=Esri.ArcGISRuntime.Maui">
+    <Grid RowDefinitions=".8*,.2*">
+        <esriUI:MapView 
+             
+            x:Name="MyMapView" 
+            Style="{DynamicResource EsriSampleGeoView}" 
+            Grid.Row="0"/>
+        <Border
+            Grid.Row="1"
+            Style="{DynamicResource EsriSampleControlPanel}">
+            <Grid Padding="5"
+                  MaximumWidthRequest="300"
+                  RowDefinitions="auto,auto,auto,auto"
+                  RowSpacing="5">
+                <Button x:Name="SolveRouteButton"
+                            Grid.Row="0"
+                            Clicked="SolveRouteClick"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Solve Route" />
+                <Button x:Name="ResetButton"
+                        Grid.Row="1"
+                        Clicked="ResetClick"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Reset" />
+                <Button x:Name="ShowHideDirectionsButton"
+                        Grid.Row="2"
+                        Clicked="ShowHideDirectionsClicked"
+                        Text="Show/Hide Directions" />
+                <Grid x:Name="DirectionsGrid"
+                      Grid.Row="3"
+                      IsVisible="false"
+                      RowDefinitions="auto,auto"
+                      RowSpacing="5">
+                    <Label Grid.Row="0" Text="Route directions:" />
+                    <ListView x:Name="DirectionsListBox"
+                              Grid.Row="1"
+                              HeightRequest="300"
+                              HorizontalOptions="CenterAndExpand" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>
+ 
