@@ -25,7 +25,7 @@ namespace CostaDeliveryApp
                       fonts.AddFont("latoitalic.TTF", "italic");
                       fonts.AddFont("latoregular.TTF", "regular");
                   })
-               
+                .UseMauiMaps()
                 .UseArcGISRuntime();
 
 #if DEBUG

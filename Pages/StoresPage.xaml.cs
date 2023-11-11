@@ -118,9 +118,9 @@ public partial class StoresPage : ContentPage
         CurrentAddress.Text = selectedAddress.Content.ToString();
     }
 
-    private void AddAddress_Clicked(object sender, EventArgs e)
+    private async void AddAddress_Clicked(object sender, EventArgs e)
     {
-          Navigation.PushAsync(new AddAddressPage());
+        await  Navigation.PushAsync(new AddAddressPage());
          //Navigation.PushAsync(new MapNavigationPage());
        // Navigation.PushAsync(new DisplayRouteLayerPage());
       //drive  Navigation.PushAsync(new NavigateRoutePage());

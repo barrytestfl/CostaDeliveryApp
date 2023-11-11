@@ -16,7 +16,7 @@
                 Margin="25,25,0,0"
                 FontAttributes="Bold"
                 FontFamily="bold"
-                Text="Choise ADDRESS"
+                Text="CHOISE ADDRESS"
                 TextColor="White" />
             <HorizontalStackLayout>
                 <Grid Margin="0,10,0,0">

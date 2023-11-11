@@ -13,7 +13,7 @@
             <RowDefinition Height=".9*" />
             <RowDefinition Height=".5*" />
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.Row="0">
 
             <maps:Map  x:Name="map" 
                        MapClicked="map_MapClicked"
